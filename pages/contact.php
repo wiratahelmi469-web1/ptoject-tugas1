@@ -18,7 +18,7 @@
     <div class="card-body">
       <h5 class="card-title">GitHub</h5>
       <p class="card-text">Lihat project dan repository saya.</p>
-      <a href="https://github.com/username_kamu" target="_blank" class="btn btn-info">
+      <a href="https://github.com/wiratahelmi469-web1" target="_blank" class="btn btn-info">
         Kunjungi
       </a>
     </div>

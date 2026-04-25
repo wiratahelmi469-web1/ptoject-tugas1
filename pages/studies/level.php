@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 if (!isset($_SESSION['user'])) {
   echo "<script>alert('Silakan login dulu');location='?page=login'</script>";
