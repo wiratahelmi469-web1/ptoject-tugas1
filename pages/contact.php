@@ -30,7 +30,7 @@
     <div class="card-body">
       <h5 class="card-title">LinkedIn</h5>
       <p class="card-text">Terhubung secara profesional dengan saya.</p>
-      <a href="https://linkedin.com/in/username_kamu" target="_blank" class="btn btn-info">
+      <a href="https://linkedin.com/in/helmi-wirata-b461b4377" target="_blank" class="btn btn-info">
         Kunjungi
       </a>
     </div>

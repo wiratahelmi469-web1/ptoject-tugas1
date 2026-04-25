@@ -4,7 +4,7 @@
     <div class="carousel-inner rounded">
 
       <div class="carousel-item active">
-        <img src="assets/img/slide1.jpg" class="d-block w-100" alt="Slide 1">
+        <img src="assets/img/slide1.png" class="d-block w-100" alt="Slide 1">
       </div>
 
       <div class="carousel-item">

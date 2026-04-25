@@ -217,9 +217,21 @@ JOIN level ON studies.idlevel = level.id
 <td><?= $row['tahun_lulus'] ?></td>
 <td><img src="assets/img/<?= $row['foto_sekolah'] ?>" width="80"></td>
 <td>
-<a href="?page=studies&aksi=detail&id=<?= $row['id'] ?>" class="btn btn-info btn-sm">Detail</a>
-<a href="?page=studies&aksi=edit&id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-<a href="?page=studies&aksi=hapus&id=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+<a href="?page=studies&aksi=detail&id=<?= $row['id'] ?>" 
+   class="btn btn-info btn-sm" title="Detail">
+   <i class="bi bi-eye"></i>
+</a>
+
+<a href="?page=studies&aksi=edit&id=<?= $row['id'] ?>" 
+   class="btn btn-warning btn-sm" title="Edit">
+   <i class="bi bi-pencil"></i>
+</a>
+
+<a href="?page=studies&aksi=hapus&id=<?= $row['id'] ?>" 
+   class="btn btn-danger btn-sm" title="Hapus"
+   onclick="return confirm('Yakin ingin hapus?')">
+   <i class="bi bi-trash"></i>
+</a>
 </td>
 </tr>
 <?php } ?>
