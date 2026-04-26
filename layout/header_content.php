@@ -8,11 +8,11 @@
       </div>
 
       <div class="carousel-item">
-        <img src="assets/img/slide2.jpg" class="d-block w-100" alt="Slide 2">
+        <img src="assets/img/slide2.png" class="d-block w-100" alt="Slide 2">
       </div>
 
       <div class="carousel-item">
-        <img src="assets/img/slide3.jpg" class="d-block w-100" alt="Slide 3">
+        <img src="assets/img/slide3.png" class="d-block w-100" alt="Slide 3">
       </div>
 
     </div>
