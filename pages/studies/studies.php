@@ -158,6 +158,7 @@ echo "<script>alert('Data berhasil diupdate');location='?page=studies'</script>"
 } elseif ($aksi == 'detail') {
 
 $id = $_GET['id'];
+$from = isset($_GET['from']) ? $_GET['from'] : 'studies';
 
 $data = mysqli_fetch_assoc(mysqli_query($koneksi, "
 SELECT studies.*, level.nama as level_nama
@@ -185,7 +186,10 @@ WHERE studies.id = $id
 <p><strong>Keterangan:</strong><br>
 <?= nl2br($data['keterangan']) ?></p>
 
-<a href="?page=studies" class="btn btn-secondary">Kembali</a>
+<a href="index.php?page=<?= ($from == 'home') ? 'home' : 'studies' ?>" 
+   class="btn btn-secondary">
+   Kembali
+</a>
 
 </div>
 </div>
@@ -217,7 +221,7 @@ JOIN level ON studies.idlevel = level.id
 <td><?= $row['tahun_lulus'] ?></td>
 <td><img src="assets/img/<?= $row['foto_sekolah'] ?>" width="80"></td>
 <td>
-<a href="?page=studies&aksi=detail&id=<?= $row['id'] ?>" 
+<a href="?page=studies&aksi=detail&id=<?= $row['id'] ?>&from=studies" 
    class="btn btn-info btn-sm" title="Detail">
    <i class="bi bi-eye"></i>
 </a>

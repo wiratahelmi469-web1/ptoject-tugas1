@@ -1,15 +1,15 @@
-<div class="accordion" id="aboutAccordion">
+<div class="accordion custom-accordion" id="aboutAccordion">
 
   <!-- HOBBY -->
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#hobby">
-        Hobby
+        <i class="bi bi-controller me-2"></i> Hobby
       </button>
     </h2>
     <div id="hobby" class="accordion-collapse collapse show" data-bs-parent="#aboutAccordion">
       <div class="accordion-body">
-        <ul>
+        <ul class="mb-0">
           <li>Desain UI/UX menggunakan Figma</li>
           <li>Ngoding website (HTML, CSS, PHP)</li>
           <li>Bermain game dan eksplor teknologi baru</li>
@@ -22,12 +22,12 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#menu">
-        Favorite Menu
+        <i class="bi bi-emoji-smile me-2"></i> Favorite Menu
       </button>
     </h2>
     <div id="menu" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
       <div class="accordion-body">
-        <ul>
+        <ul class="mb-0">
           <li>Nasi Goreng</li>
           <li>Ayam Geprek</li>
           <li>Mie Ayam</li>
@@ -40,12 +40,12 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#organisasi">
-        Pengalaman Organisasi
+        <i class="bi bi-people me-2"></i> Pengalaman Organisasi
       </button>
     </h2>
     <div id="organisasi" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
       <div class="accordion-body">
-        <ul>
+        <ul class="mb-0">
           <li>Anggota Himpunan Mahasiswa Informatika</li>
           <li>Panitia Event Kampus</li>
           <li>Tim Desain UI/UX Project Kampus</li>
