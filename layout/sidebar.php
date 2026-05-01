@@ -18,7 +18,7 @@ $page = $page ?? ($_GET['page'] ?? 'home');
   </div>
 
   <!-- INFO -->
-  <div class="p-3 small text-muted">
+  <div class="p-3 small ">
 
     <p class="mb-1"><i class="bi bi-geo-alt"></i> Bogor, Indonesia</p>
     <p class="mb-1"><i class="bi bi-mortarboard"></i> Sistem Informasi</p>

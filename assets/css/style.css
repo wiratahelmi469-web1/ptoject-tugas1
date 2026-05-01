@@ -71,11 +71,60 @@ body {
 }
 
 /* ================= SIDEBAR ================= */
+/* ================= SIDEBAR ================= */
 .sidebar-card {
-  background: #f59e0b; /* orange soft */
-  color: #1e293b;
+  background: #1e293b; /* navy soft */
+  color: #e5e7eb;
   border-radius: 16px;
   overflow: hidden;
+}
+
+/* profile section */
+.sidebar-card .text-center {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* nama */
+.sidebar-card h6 {
+  color: #ffffff !important;
+}
+
+/* info text */
+.sidebar-card .text-muted {
+  color: #cbd5e1 !important;
+}
+
+/* icon */
+.sidebar-card i {
+  color: #94a3b8 !important;
+}
+
+/* quote */
+.sidebar-card .fst-italic {
+  color: #94a3b8 !important;
+  font-size: 13px;
+}
+
+/* menu */
+.sidebar-card .list-group-item {
+  background: transparent;
+  color: #cbd5e1;
+  border: none;
+  transition: 0.3s;
+}
+
+/* hover */
+.sidebar-card .list-group-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* active */
+.sidebar-card .list-group-item.active {
+  background: #3b82f6;
+  color: #fff;
+  border-radius: 8px;
 }
 
 /* ================= FOOTER ================= */
