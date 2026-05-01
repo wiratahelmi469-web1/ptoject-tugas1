@@ -69,11 +69,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <?php } ?>
 
-        <li class="nav-item ms-2">
-          <button id="toggleDark" class="btn btn-sm btn-outline-light">
-            <i class="bi bi-moon"></i>
-          </button>
-        </li>
+       
 
       </ul>
     </div>

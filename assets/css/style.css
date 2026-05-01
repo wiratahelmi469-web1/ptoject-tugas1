@@ -1,6 +1,18 @@
+/* ================= ROOT (biar gampang ganti tema) ================= */
+:root{
+  --bg-main: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  --primary-dark: #1e293b;
+  --primary-soft: #334155;
+  --accent: #60a5fa;
+  --text-light: #ffffff;
+  --text-soft: #cbd5e1;
+  --text-muted: #94a3b8;
+  --footer-bg: #dc2626; /* merah */
+}
+
 /* ================= GLOBAL ================= */
 body {
-  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  background: var(--bg-main);
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
 }
@@ -8,282 +20,79 @@ body {
 /* ================= CARD ================= */
 .card {
   border-radius: 12px;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.card-img-top {
-  border-radius: 10px 10px 0 0;
-}
-
-/* ================= PROFILE ================= */
-.profile-card {
-  border-radius: 14px;
-}
-
-.profile-img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-
 /* ================= NAVBAR ================= */
 .navbar-custom {
-  background: linear-gradient(to right, #141e30, #243b55);
+  background: linear-gradient(135deg, var(--primary-soft), var(--primary-dark));
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: var(--text-light);
+}
+.navbar-custom .nav-link {
+  font-weight: 500;
+  transition: .3s;
+}
+.navbar-custom .nav-link:hover {
+  color: #fff;
 }
 
+/* underline hover */
 .nav-hover {
   position: relative;
-  margin-right: 10px;
 }
-
 .nav-hover::after {
   content: '';
-  width: 0%;
+  width: 0;
   height: 2px;
-  background: #0d6efd;
+  background: var(--accent);
   position: absolute;
   left: 0;
   bottom: 0;
-  transition: 0.3s;
+  transition: .3s;
 }
-
 .nav-hover:hover::after {
   width: 100%;
 }
 
+/* user */
 .user-pill {
   background: rgba(255,255,255,0.1);
+  color: #fff;
   padding: 5px 12px;
   border-radius: 20px;
 }
 
-
-/* ===================== SIDEBAR ===================== */
-/* ===== SIDEBAR ===== */
+/* ================= SIDEBAR ================= */
 .sidebar-card {
-  background: #1e293b;
-  color: #e5e7eb;
+  background: #f59e0b; /* orange soft */
+  color: #1e293b;
   border-radius: 16px;
   overflow: hidden;
 }
 
-/* ===== PROFILE ===== */
-.sidebar-profile {
-  padding: 20px;
-}
-
-/* FIX AVATAR (INI YANG PENTING) */
-.sidebar-avatar {
-  width: 120px !important;
-  height: 120px !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  display: block;
-  margin: 0 auto;
-}
-
-/* ===== INFO ===== */
-.sidebar-info {
-  padding: 15px;
-  font-size: 13px;
-}
-
-.sidebar-info p {
-  margin-bottom: 6px;
-  color: #9ca3af;
-}
-
-.quote {
-  display: block;
-  margin-top: 10px;
-  color: #6b7280;
-}
-
-/* ===== MENU ===== */
-.sidebar-menu {
-  padding: 10px;
-}
-
-/* FIX MENU BIAR VERTICAL */
-.sidebar-link {
-  display: block;   /* INI KUNCI BIAR GA NYAMBUNG */
-  padding: 10px 14px;
-  margin-bottom: 5px;
-  color: #cbd5f5;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-.sidebar-link i {
-  margin-right: 8px;
-}
-
-/* hover */
-.sidebar-link:hover {
-  background: #334155;
-  color: #fff;
-}
-
-/* active */
-.sidebar-link.active {
-  background: #3b82f6;
-  color: #fff;
-}
 /* ================= FOOTER ================= */
-.footer-custom {
-  background: #111;
-  color: #ccc;
-  padding: 40px 0;
+footer.footer-custom {
+  background: #f8fafc; /* abu terang */
+  border-top: 1px solid #e2e8f0;
 }
 
-.footer-custom h5,
-.footer-custom h6 {
-  color: #fff;
+/* teks */
+.footer-copy {
+  color: #475569;
+  font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
-.footer-custom a {
-  color: #ccc;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.footer-custom a:hover {
-  color: #0d6efd;
-}
-
-/* ================= SOCIAL ICON ================= */
-.social-icon {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 20px;
-  color: #ccc;
+/* hover halus */
+.footer-copy:hover {
+  color: #1e293b;
   transition: 0.3s;
-}
-
-.social-icon:hover {
-  color: #0d6efd;
-  transform: scale(1.2);
-}
-
-/* ================= DROPDOWN ================= */
-.dropdown-menu {
-  border-radius: 10px;
-}
-
-.custom-accordion .accordion-item {
-  border: none;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* DEFAULT */
-.custom-accordion .accordion-button {
-  background: #1f2937; /* abu gelap */
-  color: #fff;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-/* SAAT AKTIF */
-.custom-accordion .accordion-button:not(.collapsed) {
-  background: #111; /* hitam */
-  color: #fff;
-}
-
-/* HOVER */
-.custom-accordion .accordion-button:hover {
-  background: #000;
-  color: #fff;
-}
-
-/* BODY */
-.custom-accordion .accordion-body {
-  background: #f8f9fa;
-  padding: 15px;
-}
-
-/* LIST */
-.custom-accordion ul li {
-  margin-bottom: 5px;
-}
-
-.custom-accordion .accordion-button:not(.collapsed) {
-  border-left: 4px solid #0d6efd;
-}
-
-.custom-accordion .accordion-button:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-/* DEFAULT sudah terang dari kamu */
-
-/* ===== DARK MODE ===== */
-body.dark-mode {
-  background: #0f172a;
-  color: #e2e8f0;
-}
-
-/* Card */
-body.dark-mode .card {
-  background: #1e293b;
-  color: #e2e8f0;
-}
-
-/* Sidebar */
-body.dark-mode .sidebar-card {
-  background: #1e293b;
-}
-
-/* Navbar */
-body.dark-mode .navbar-custom {
-  background: linear-gradient(to right, #000, #1a1a1a);
-}
-
-/* Footer */
-body.dark-mode .footer-custom {
-  background: #000;
-}
-
-/* Accordion */
-body.dark-mode .accordion-button {
-  background: #1e293b;
-  color: #fff;
-}
-
-body.dark-mode .accordion-body {
-  background: #0f172a;
-}
-
-/* Link */
-body.dark-mode a {
-  color: #93c5fd;
-}
-/* Fade in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.carousel-item {
-  transition: transform 0.6s ease;
-}
-
-.carousel .card {
-  border-radius: 12px;
 }
