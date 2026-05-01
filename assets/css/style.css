@@ -64,32 +64,79 @@ body {
   border-radius: 20px;
 }
 
-/* ================= SIDEBAR ================= */
+
+/* ===================== SIDEBAR ===================== */
+/* ===== SIDEBAR ===== */
 .sidebar-card {
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  background: #1e293b;
+  color: #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
+/* ===== PROFILE ===== */
+.sidebar-profile {
+  padding: 20px;
+}
+
+/* FIX AVATAR (INI YANG PENTING) */
+.sidebar-avatar {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== INFO ===== */
+.sidebar-info {
+  padding: 15px;
+  font-size: 13px;
+}
+
+.sidebar-info p {
+  margin-bottom: 6px;
+  color: #9ca3af;
+}
+
+.quote {
+  display: block;
+  margin-top: 10px;
+  color: #6b7280;
+}
+
+/* ===== MENU ===== */
+.sidebar-menu {
+  padding: 10px;
+}
+
+/* FIX MENU BIAR VERTICAL */
 .sidebar-link {
-  border: none;
-  border-radius: 8px;
+  display: block;   /* INI KUNCI BIAR GA NYAMBUNG */
+  padding: 10px 14px;
   margin-bottom: 5px;
-  transition: 0.3s;
+  color: #cbd5f5;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
+.sidebar-link i {
+  margin-right: 8px;
+}
+
+/* hover */
 .sidebar-link:hover {
-  background-color: #0d6efd;
+  background: #334155;
   color: #fff;
-  transform: translateX(5px);
 }
 
+/* active */
 .sidebar-link.active {
-  background-color: #0d6efd;
+  background: #3b82f6;
   color: #fff;
-  font-weight: bold;
 }
-
 /* ================= FOOTER ================= */
 .footer-custom {
   background: #111;
@@ -232,4 +279,11 @@ body.dark-mode a {
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);
+}
+.carousel-item {
+  transition: transform 0.6s ease;
+}
+
+.carousel .card {
+  border-radius: 12px;
 }
