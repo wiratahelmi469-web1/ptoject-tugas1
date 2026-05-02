@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  background: url('assets/img/bg-zoom.jpg') no-repeat center center fixed !important;
+  background: url('assets/img/monkey.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
 }
 </style>
