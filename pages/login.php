@@ -1,6 +1,18 @@
 <?php include 'layout/header.php'; ?>
-<?php
 
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: url('assets/img/bg-zoom.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+</style>
+
+<?php
 include 'config/koneksi.php';
 
 if (isset($_POST['login'])) {
@@ -22,10 +34,8 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<div class="d-flex justify-content-center align-items-center" style="min-height:80vh;">
+<div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
   <div class="card p-4 shadow" style="width:350px;">
-    
-    
 
     <form method="POST">
       <input type="text" name="username" class="form-control mb-2" placeholder="Username" required>
