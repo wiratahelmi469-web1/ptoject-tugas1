@@ -1,3 +1,4 @@
+<?php include 'layout/header.php'; ?>
 <?php
 
 include 'config/koneksi.php';
@@ -24,12 +25,12 @@ if (isset($_POST['login'])) {
 <div class="d-flex justify-content-center align-items-center" style="min-height:80vh;">
   <div class="card p-4 shadow" style="width:350px;">
     
-    <h4 class="text-center mb-3">Login</h4>
+    
 
     <form method="POST">
       <input type="text" name="username" class="form-control mb-2" placeholder="Username" required>
       <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
-      <button name="login" class="btn btn-primary w-100">Masuk</button>
+      <button name="login" class="btn btn-primary w-100">Login</button>
     </form>
 
   </div>

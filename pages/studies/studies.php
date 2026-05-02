@@ -85,16 +85,48 @@ class="form-control mb-2" required>
 value="<?= $data['tahun_lulus'] ?>"
 class="form-control mb-2" min="1900" max="2099">
 
-<input type="file" name="foto" id="foto" class="form-control mb-2">
+<!-- INPUT HIDDEN FOTO LAMA -->
+<input type="hidden" name="foto_lama" value="<?= $data['foto_sekolah'] ?>">
 
-<p>Foto saat ini:</p>
-<img src="assets/img/<?= $data['foto_sekolah'] ?>" id="preview-img" width="120" class="mb-2">
+<!-- INPUT FILE -->
+<div class="mb-3">
+  <label class="form-label fw-semibold">Upload Foto</label>
 
-<div class="border p-3 rounded">
-<h5>Preview</h5>
-<p>Nama: <span id="prev-nama"><?= $data['nama'] ?></span></p>
-<p>Keterangan: <span id="prev-ket"><?= $data['keterangan'] ?></span></p>
-<p>Tahun: <span id="prev-tahun"><?= $data['tahun_lulus'] ?></span></p>
+  <input type="file" name="foto" id="foto" class="form-control">
+
+  <!-- INFO FILE -->
+  <small class="text-muted d-block mt-1">
+    File sekarang: <?= $data['foto_sekolah'] ? $data['foto_sekolah'] : 'Belum ada file' ?>
+  </small>
+
+  
+</div>
+
+<div class="card shadow-sm mt-3">
+
+  <div class="card-header bg-light fw-bold">
+    Preview
+  </div>
+
+  <div class="card-body">
+
+    <p class="mb-2">
+      <strong>Nama:</strong><br>
+      <span id="prev-nama"><?= $data['nama'] ?></span>
+    </p>
+
+    <p class="mb-2 text-justify">
+      <strong>Keterangan:</strong><br>
+      <span id="prev-ket"><?= $data['keterangan'] ?></span>
+    </p>
+
+    <p class="mb-0">
+      <strong>Tahun Lulus:</strong><br>
+      <span id="prev-tahun"><?= $data['tahun_lulus'] ?></span>
+    </p>
+
+  </div>
+
 </div>
 
 <button name="update" class="btn btn-success mt-3">Update</button>
@@ -125,34 +157,39 @@ reader.readAsDataURL(file);
 <?php
 if (isset($_POST['update'])) {
 
-$nama = $_POST['nama'];
-$idlevel = $_POST['idlevel'];
-$ket = $_POST['keterangan'];
-$tahun = $_POST['tahun_lulus'];
+  $nama = $_POST['nama'];
+  $idlevel = $_POST['idlevel'];
+  $ket = $_POST['keterangan'];
+  $tahun = $_POST['tahun_lulus'];
 
-$foto = $_FILES['foto']['name'];
+  $foto_lama = $_POST['foto_lama'];
 
-if ($foto != "") {
-move_uploaded_file($_FILES['foto']['tmp_name'], "assets/img/".$foto);
+  // cek upload baru
+  if (!empty($_FILES['foto']['name'])) {
 
-mysqli_query($koneksi, "UPDATE studies SET
-nama='$nama',
-idlevel='$idlevel',
-keterangan='$ket',
-tahun_lulus='$tahun',
-foto_sekolah='$foto'
-WHERE id=$id");
-} else {
-mysqli_query($koneksi, "UPDATE studies SET
-nama='$nama',
-idlevel='$idlevel',
-keterangan='$ket',
-tahun_lulus='$tahun'
-WHERE id=$id");
+    $foto = $_FILES['foto']['name'];
+    $tmp = $_FILES['foto']['tmp_name'];
+
+    move_uploaded_file($tmp, "assets/img/" . $foto);
+
+  } else {
+    // pakai foto lama
+    $foto = $foto_lama;
+  }
+
+  mysqli_query($koneksi, "
+    UPDATE studies SET
+    nama='$nama',
+    idlevel='$idlevel',
+    keterangan='$ket',
+    tahun_lulus='$tahun',
+    foto_sekolah='$foto'
+    WHERE id=$id
+  ");
+
+  echo "<script>alert('Data berhasil diupdate');location='?page=studies';</script>";
 }
 
-echo "<script>alert('Data berhasil diupdate');location='?page=studies'</script>";
-}
 
 /* ===================== DETAIL ===================== */
 } elseif ($aksi == 'detail') {
@@ -251,3 +288,9 @@ mysqli_query($koneksi, "DELETE FROM studies WHERE id=".$_GET['id']);
 echo "<script>alert('Data dihapus');location='?page=studies'</script>";
 }
 ?>
+<script>
+document.getElementById('foto').addEventListener('change', function(e) {
+  const fileName = e.target.files[0]?.name || "Belum ada file";
+  document.getElementById('nama-file').textContent = "File dipilih: " + fileName;
+});
+</script>

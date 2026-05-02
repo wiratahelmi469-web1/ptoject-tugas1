@@ -13,26 +13,26 @@
 
           <div class="col-6 col-md-3">
             <i class="bi bi-mortarboard fs-5 text-primary"></i>
-            <div class="fw-semibold" style="font-size:14px;">5</div>
-            <small class="text-muted" style="font-size:11px;">Level</small>
+            <div class="fw-semibold">5</div>
+            <small class="text-muted">Level</small>
           </div>
 
           <div class="col-6 col-md-3">
             <i class="bi bi-book fs-5 text-success"></i>
-            <div class="fw-semibold" style="font-size:14px;">5</div>
-            <small class="text-muted" style="font-size:11px;">Studies</small>
+            <div class="fw-semibold">5</div>
+            <small class="text-muted">Studies</small>
           </div>
 
           <div class="col-6 col-md-3">
             <i class="bi bi-code-slash fs-5 text-warning"></i>
-            <div class="fw-semibold" style="font-size:14px;">10+</div>
-            <small class="text-muted" style="font-size:11px;">Project</small>
+            <div class="fw-semibold">10+</div>
+            <small class="text-muted">Project</small>
           </div>
 
           <div class="col-6 col-md-3">
             <i class="bi bi-briefcase fs-5 text-danger"></i>
-            <div class="fw-semibold" style="font-size:14px;">3</div>
-            <small class="text-muted" style="font-size:11px;">Experience</small>
+            <div class="fw-semibold">3</div>
+            <small class="text-muted">Experience</small>
           </div>
 
         </div>
@@ -80,6 +80,7 @@
 
   </div>
 
+
   <!-- ================= RIGHT ================= -->
   <div class="col-md-5 d-flex">
 
@@ -102,26 +103,35 @@
           while($row = mysqli_fetch_assoc($query)) {
           ?>
 
-            <div class="col-6 mb-3">
-              <div class="card border-0 shadow-sm h-100">
+          <div class="col-6 mb-3">
+            <div class="card border-0 shadow-sm h-100 study-card"
 
-                <img src="assets/img/<?= $row['foto_sekolah'] ?>"
-                     class="card-img-top"
-                     style="height:110px; object-fit:cover;">
+                 data-bs-toggle="modal"
+                 data-bs-target="#detailModal"
 
-                <div class="card-body p-2 text-center">
-                  <small class="fw-bold d-block"><?= $row['nama'] ?></small>
-                  <small class="text-muted"><?= $row['tahun_lulus'] ?></small>
-                </div>
+                 data-nama="<?= $row['nama'] ?>"
+                 data-level="<?= $row['level_nama'] ?>"
+                 data-tahun="<?= $row['tahun_lulus'] ?>"
+                 data-foto="assets/img/<?= $row['foto_sekolah'] ?>"
+                 data-keterangan="<?= $row['keterangan'] ?>">
 
+              <img src="assets/img/<?= $row['foto_sekolah'] ?>"
+                   class="card-img-top"
+                   style="height:110px; object-fit:cover;">
+
+              <div class="card-body p-2 text-center">
+                <small class="fw-bold d-block"><?= $row['nama'] ?></small>
+                <small class="text-muted"><?= $row['tahun_lulus'] ?></small>
               </div>
+
             </div>
+          </div>
 
           <?php } ?>
 
         </div>
 
-        <!-- VIEW MORE (POSISI BENAR DI BAWAH) -->
+        <!-- VIEW ALL -->
         <div class="text-center mt-auto">
           <a href="?page=studies" class="btn btn-outline-primary btn-sm px-3">
             View All
@@ -134,3 +144,51 @@
   </div>
 
 </div>
+
+
+<!-- ================= MODAL ================= -->
+<div class="modal fade" id="detailModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNama"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+
+        <img id="modalFoto" class="img-fluid mb-3 rounded">
+
+        <p><strong>Level:</strong> <span id="modalLevel"></span></p>
+        <p><strong>Tahun Lulus:</strong> <span id="modalTahun"></span></p>
+
+        <p id="modalKeterangan" class="small" style="text-align: justify; line-height:1.6;"></p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const modal = document.getElementById('detailModal');
+
+  modal.addEventListener('show.bs.modal', function (event) {
+
+    const card = event.relatedTarget;
+
+    document.getElementById('modalNama').innerText = card.getAttribute('data-nama');
+    document.getElementById('modalLevel').innerText = card.getAttribute('data-level');
+    document.getElementById('modalTahun').innerText = card.getAttribute('data-tahun');
+    document.getElementById('modalFoto').src = card.getAttribute('data-foto');
+    document.getElementById('modalKeterangan').innerText = card.getAttribute('data-keterangan');
+
+  });
+
+});
+</script>

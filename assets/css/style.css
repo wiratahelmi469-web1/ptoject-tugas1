@@ -70,7 +70,7 @@ body {
   border-radius: 20px;
 }
 
-/* ================= SIDEBAR ================= */
+
 /* ================= SIDEBAR ================= */
 .sidebar-card {
   background: #1e293b; /* navy soft */
@@ -144,4 +144,26 @@ footer.footer-custom {
 .footer-copy:hover {
   color: #1e293b;
   transition: 0.3s;
+}
+.study-card {
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.study-card:hover {
+  transform: scale(1.05);
+}
+
+/* modal dark mode */
+body.dark-mode .modal-content {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+.img-preview-small {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
