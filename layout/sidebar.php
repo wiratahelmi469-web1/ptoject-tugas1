@@ -23,7 +23,10 @@ $page = $page ?? ($_GET['page'] ?? 'home');
     <p class="mb-1"><i class="bi bi-geo-alt"></i> Bogor, Indonesia</p>
     <p class="mb-1"><i class="bi bi-mortarboard"></i> Sistem Informasi</p>
     <p class="mb-1"><i class="bi bi-building"></i> STT Nurul Fikri</p>
-    <p class="mb-1"><i class="bi bi-envelope"></i> wiratahelmi469@gmail.com</p>
+    <div class="d-flex align-items-center mb-2">
+        <i class="bi bi-envelope me-2"></i>
+        <span>wiratahelmi469@gmail.com</span>
+      </div>
 
     <div class="mt-2 fst-italic">
       "Code is like humor. When you have to explain it, it's bad."

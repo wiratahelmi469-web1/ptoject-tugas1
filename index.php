@@ -21,13 +21,11 @@ if ($page === 'logout') {
 }
 
 /* ================= AUTH GUARD ================= */
-// belum login → hanya boleh akses login
 if (!isset($_SESSION['user']) && $page !== 'login') {
     header("Location: ?page=login");
     exit;
 }
 
-// sudah login → tidak boleh kembali ke login
 if (isset($_SESSION['user']) && $page === 'login') {
     header("Location: ?page=home");
     exit;
@@ -37,7 +35,15 @@ if (isset($_SESSION['user']) && $page === 'login') {
 <!-- ================= HEADER ================= -->
 <?php include 'layout/header.php'; ?>
 
-<?php if ($page !== 'login') include 'layout/menu.php'; ?>
+<?php if ($page !== 'login') { ?>
+
+  <!-- 🔥 HERO / CAROUSEL (TAMBAHKAN DI SINI) -->
+  <?php include 'layout/header_content.php'; ?>
+
+  <!-- MENU -->
+  <?php include 'layout/menu.php'; ?>
+
+<?php } ?>
 
 <?php if ($page === 'login') { ?>
 

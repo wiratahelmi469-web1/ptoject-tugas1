@@ -148,7 +148,7 @@
 
 <!-- ================= MODAL ================= -->
 <div class="modal fade" id="detailModal" tabindex="-1">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:500px;">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -156,14 +156,31 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <div class="modal-body text-center">
+      <div class="modal-body">
 
-        <img id="modalFoto" class="img-fluid mb-3 rounded">
+        <!-- IMAGE -->
+        <div style="display:flex; justify-content:center;">
+          <img id="modalFoto"
+               style="width:100%; max-width:400px; height:200px; object-fit:cover; border-radius:10px;">
+        </div>
 
-        <p><strong>Level:</strong> <span id="modalLevel"></span></p>
-        <p><strong>Tahun Lulus:</strong> <span id="modalTahun"></span></p>
+        <!-- META -->
+        <div class="d-flex justify-content-center gap-3 mb-3 text-muted small">
 
-        <p id="modalKeterangan" class="small" style="text-align: justify; line-height:1.6;"></p>
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-mortarboard"></i>
+            <span id="modalLevel"></span>
+          </div>
+
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-calendar"></i>
+            <span id="modalTahun"></span>
+          </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <p id="modalKeterangan" style="text-align:justify; line-height:1.6;"></p>
 
       </div>
 
@@ -182,11 +199,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const card = event.relatedTarget;
 
-    document.getElementById('modalNama').innerText = card.getAttribute('data-nama');
-    document.getElementById('modalLevel').innerText = card.getAttribute('data-level');
-    document.getElementById('modalTahun').innerText = card.getAttribute('data-tahun');
-    document.getElementById('modalFoto').src = card.getAttribute('data-foto');
-    document.getElementById('modalKeterangan').innerText = card.getAttribute('data-keterangan');
+    document.getElementById('modalNama').innerText = card.dataset.nama;
+    document.getElementById('modalLevel').innerText = card.dataset.level;
+    document.getElementById('modalTahun').innerText = card.dataset.tahun;
+    document.getElementById('modalFoto').src = card.dataset.foto;
+    document.getElementById('modalKeterangan').innerText = card.dataset.keterangan;
 
   });
 

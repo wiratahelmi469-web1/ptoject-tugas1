@@ -1,5 +1,5 @@
 <footer class="footer-custom mt-5">
-  <div class="container text-center py-3">
+  <div class="container text-center py-3 alert alert-black">
 
     <p class="footer-copy mb-0">
       © 2026 • HELMI WIRATA ❤️

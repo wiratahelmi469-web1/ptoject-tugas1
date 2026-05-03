@@ -9,14 +9,6 @@ include 'config/koneksi.php';
 $aksi = $_GET['aksi'] ?? '';
 ?>
 
-<h4>Data Studies</h4>
-
-<?php if ($aksi == '') { ?>
-  <a href="?page=studies&aksi=tambah" class="btn btn-primary mb-3">
-    Tambah Studies
-  </a>
-<?php } ?>
-
 <?php
 /* ===================== TAMBAH ===================== */
 if ($aksi == 'tambah') {
@@ -28,7 +20,7 @@ if ($aksi == 'tambah') {
 
   <input type="text" name="nama" class="form-control mb-2" placeholder="Nama Sekolah" required>
 
-  <select name="idlevel" class="form-control mb-2" required>
+  <select name="idlevel" class="form-control mb-2">
     <?php while($l = mysqli_fetch_assoc($level)) { ?>
       <option value="<?= $l['id'] ?>"><?= $l['nama'] ?></option>
     <?php } ?>
@@ -36,26 +28,14 @@ if ($aksi == 'tambah') {
 
   <textarea name="keterangan" class="form-control mb-2" placeholder="Keterangan"></textarea>
 
-  <input type="number" name="tahun_lulus" class="form-control mb-2" placeholder="Tahun Lulus" required>
+  <input type="number" name="tahun_lulus" class="form-control mb-2" placeholder="Tahun Lulus">
 
-  <!-- UPLOAD -->
   <input type="file" name="foto" id="foto" class="form-control mb-2">
-
-  <small class="text-muted" id="nama-file">Belum ada file dipilih</small>
-
-  <br><br>
 
   <button name="simpan" class="btn btn-success">Simpan</button>
   <a href="?page=studies" class="btn btn-secondary">Kembali</a>
 
 </form>
-
-<script>
-document.getElementById('foto').addEventListener('change', function(e) {
-  const fileName = e.target.files[0]?.name || "Belum ada file";
-  document.getElementById('nama-file').textContent = "File dipilih: " + fileName;
-});
-</script>
 
 <?php
 if (isset($_POST['simpan'])) {
@@ -74,7 +54,7 @@ if (isset($_POST['simpan'])) {
   mysqli_query($koneksi, "INSERT INTO studies(nama,idlevel,keterangan,tahun_lulus,foto_sekolah)
   VALUES('$nama','$idlevel','$ket','$tahun','$foto')");
 
-  echo "<script>alert('Data berhasil ditambahkan');location='?page=studies'</script>";
+  echo "<script>location='?page=studies'</script>";
 }
 ?>
 
@@ -91,7 +71,7 @@ $level = mysqli_query($koneksi, "SELECT * FROM level");
 
 <input type="hidden" name="foto_lama" value="<?= $data['foto_sekolah'] ?>">
 
-<input type="text" name="nama" value="<?= $data['nama'] ?>" class="form-control mb-2" required>
+<input type="text" name="nama" value="<?= $data['nama'] ?>" class="form-control mb-2">
 
 <select name="idlevel" class="form-control mb-2">
 <?php while($l = mysqli_fetch_assoc($level)) { ?>
@@ -105,16 +85,9 @@ $level = mysqli_query($koneksi, "SELECT * FROM level");
 
 <input type="number" name="tahun_lulus" value="<?= $data['tahun_lulus'] ?>" class="form-control mb-2">
 
-<!-- UPLOAD -->
-<input type="file" name="foto" id="foto" class="form-control mb-2">
+<input type="file" name="foto" class="form-control mb-2">
 
-<small class="text-muted">
-File sekarang: <?= $data['foto_sekolah'] ?>
-</small>
-
-<br>
-
-<small class="text-primary" id="nama-file">Belum ada file dipilih</small>
+<small class="text-muted">File: <?= $data['foto_sekolah'] ?></small>
 
 <br><br>
 
@@ -122,13 +95,6 @@ File sekarang: <?= $data['foto_sekolah'] ?>
 <a href="?page=studies" class="btn btn-secondary">Kembali</a>
 
 </form>
-
-<script>
-document.getElementById('foto').addEventListener('change', function(e) {
-  const fileName = e.target.files[0]?.name || "Belum ada file";
-  document.getElementById('nama-file').textContent = "File dipilih: " + fileName;
-});
-</script>
 
 <?php
 if (isset($_POST['update'])) {
@@ -156,7 +122,7 @@ if (isset($_POST['update'])) {
   WHERE id=$id
   ");
 
-  echo "<script>alert('Data berhasil diupdate');location='?page=studies'</script>";
+  echo "<script>location='?page=studies'</script>";
 }
 ?>
 
@@ -178,28 +144,86 @@ JOIN level ON studies.idlevel = level.id
 
 <?php $no=1; while($row = mysqli_fetch_assoc($query)) { ?>
 <tr>
+
 <td><?= $no++ ?></td>
 <td><?= $row['nama'] ?></td>
 <td><?= $row['level_nama'] ?></td>
 <td><?= $row['tahun_lulus'] ?></td>
 <td><img src="assets/img/<?= $row['foto_sekolah'] ?>" width="80"></td>
+
 <td>
+<div style="display:flex; gap:5px; justify-content:center;">
 
-<a href="?page=studies&aksi=detail&id=<?= $row['id'] ?>" 
-   class="btn btn-info btn-sm">Detail</a>
+<!-- DETAIL MODAL -->
+<a href="#" class="btn btn-info btn-sm"
+   data-bs-toggle="modal"
+   data-bs-target="#modal<?= $row['id'] ?>">
+  <i class="bi bi-eye"></i>
+</a>
 
-<a href="?page=studies&aksi=edit&id=<?= $row['id'] ?>" 
-   class="btn btn-warning btn-sm">Edit</a>
+<a href="?page=studies&aksi=edit&id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">
+  <i class="bi bi-pencil"></i>
+</a>
 
-<a href="?page=studies&aksi=hapus&id=<?= $row['id'] ?>" 
+<a href="?page=studies&aksi=hapus&id=<?= $row['id'] ?>"
    class="btn btn-danger btn-sm"
-   onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+   onclick="return confirm('Yakin?')">
+  <i class="bi bi-trash"></i>
+</a>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="modal<?= $row['id'] ?>" tabindex="-1">
+  <div class="modal-dialog" style="max-width:500px;">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title"><?= $row['nama'] ?></h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div style="display:flex; justify-content:center;">
+            <img src="assets/img/<?= $row['foto_sekolah'] ?>"
+             style="width:100%; max-width:400px; height:200px; object-fit:cover; border-radius:10px;">
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 mb-3 text-muted small">
+          <span class="me-3">
+            <i class="bi bi-mortarboard"></i> <?= $row['level_nama'] ?>
+          </span>
+
+          <span>
+            <i class="bi bi-calendar"></i> <?= $row['tahun_lulus'] ?>
+          </span>
+        </div>
+
+        <p style="text-align:justify;">
+          <?= $row['keterangan'] ?>
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </td>
+
 </tr>
 <?php } ?>
 
 </table>
+
+<?php if ($aksi == '') { ?>
+  <div class="text-center mt-4">
+    <a href="?page=studies&aksi=tambah" class="btn btn-primary px-4">
+      <i class="bi bi-plus-circle me-1"></i> Tambah Studies
+    </a>
+  </div>
+<?php } ?>
 
 <?php
 }
@@ -207,6 +231,7 @@ JOIN level ON studies.idlevel = level.id
 /* ===================== HAPUS ===================== */
 if ($aksi == 'hapus') {
 mysqli_query($koneksi, "DELETE FROM studies WHERE id=".$_GET['id']);
-echo "<script>alert('Data dihapus');location='?page=studies'</script>";
+echo "<script>location='?page=studies'</script>";
 }
 ?>
+
