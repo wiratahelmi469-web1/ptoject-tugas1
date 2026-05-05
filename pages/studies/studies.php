@@ -1,4 +1,15 @@
 <?php
+$aksi = $_GET['aksi'] ?? '';
+
+if (in_array($aksi, ['tambah','edit','hapus'])) {
+  if (!isset($_SESSION['user'])) {
+    echo "<script>alert('Harus login dulu');location='?page=login'</script>";
+    exit;
+  }
+}
+?>
+
+<?php
 if (!isset($_SESSION['user'])) {
   echo "<script>alert('Silakan login dulu');location='?page=login'</script>";
   exit;

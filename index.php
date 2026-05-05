@@ -16,16 +16,12 @@ if (!in_array($page, $allowed_pages)) {
 if ($page === 'logout') {
     $_SESSION = [];
     session_destroy();
-    header("Location: ?page=login");
+    header("Location: ?page=home"); // 🔥 balik ke home, bukan login
     exit;
 }
 
-/* ================= AUTH GUARD ================= */
-if (!isset($_SESSION['user']) && $page !== 'login') {
-    header("Location: ?page=login");
-    exit;
-}
-
+/* ================= REDIRECT LOGIN ================= */
+/* kalau sudah login tidak boleh ke login lagi */
 if (isset($_SESSION['user']) && $page === 'login') {
     header("Location: ?page=home");
     exit;
@@ -37,7 +33,7 @@ if (isset($_SESSION['user']) && $page === 'login') {
 
 <?php if ($page !== 'login') { ?>
 
-  <!-- 🔥 HERO / CAROUSEL (TAMBAHKAN DI SINI) -->
+  <!-- HERO -->
   <?php include 'layout/header_content.php'; ?>
 
   <!-- MENU -->

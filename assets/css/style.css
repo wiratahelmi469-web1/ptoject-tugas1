@@ -232,14 +232,6 @@ body {
 }
 
 /* ================= FOOTER ================= */
-footer.footer-custom {
-  background: #020617;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.footer-copy {
-  color: var(--text-muted);
-}
 
 /* ================= IMAGE ================= */
 .img-preview-small {
@@ -310,4 +302,9 @@ footer.footer-custom {
 /* ================= FIX TEXT BOOTSTRAP ================= */
 .text-muted {
   color: #94a3b8 !important;
+}
+.alert-dark {
+  background: linear-gradient(135deg, #020617, #1e293b) !important;
+  color: #e2e8f0 !important;
+  border: none !important;
 }

@@ -1,9 +1,9 @@
-<footer class="footer-custom mt-5">
-  <div class="container text-center py-3 alert alert-black">
+<footer class="mt-5">
 
-    <p class="footer-copy mb-0">
-      © 2026 • HELMI WIRATA ❤️
-    </p>
+  <div class="alert alert-dark text-center mb-0 rounded-0">
+
+    © 2026 • <strong>HELMI WIRATA</strong> ❤️
 
   </div>
+
 </footer>
